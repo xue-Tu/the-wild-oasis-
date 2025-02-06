@@ -33,3 +33,36 @@ const FilterButton = styled.button`
     color: var(--color-brand-50);
   }
 `;
+
+import React from "react";
+import { useSearchParams } from "react-router-dom";
+
+function Filter({ filterField, options }) {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const discount = searchParams.get(filterField) || "all";
+
+  function handleClick(value) {
+    searchParams.set("discount", value);
+    setSearchParams(searchParams);
+  }
+
+  // React.useEffect(() => {
+  //   if (!discount) setSearchParams({ discount: "all" });
+  // }, [discount, setSearchParams]);
+
+  return (
+    <StyledFilter>
+      {options.map((data) => (
+        <FilterButton
+          active={discount == data.value ? 1 : 0}
+          disabled={discount == data.value}
+          key={data.value}
+          onClick={() => handleClick(data.value)}>
+          {data.label}
+        </FilterButton>
+      ))}
+    </StyledFilter>
+  );
+}
+
+export default Filter;

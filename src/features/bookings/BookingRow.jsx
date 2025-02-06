@@ -43,7 +43,7 @@ function BookingRow({
     numNights,
     numGuests,
     totalPrice,
-    status,
+    status = "unconfirmed",
     guests: { fullName: guestName, email },
     cabins: { name: cabinName },
   },
