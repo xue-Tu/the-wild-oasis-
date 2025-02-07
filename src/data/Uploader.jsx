@@ -7,7 +7,6 @@ import { subtractDates } from "../utils/helpers";
 import { bookings } from "./data-bookings";
 import { cabins } from "./data-cabins";
 import { guests } from "./data-guests";
-
 // const originalSettings = {
 //   minBookingLength: 3,
 //   maxBookingLength: 30,
@@ -31,12 +30,21 @@ async function deleteBookings() {
 }
 
 async function createGuests() {
-  const { error } = await supabase.from("guests").insert(guests);
+
+
+  const { data, error } = await supabase
+  .from('guests')
+  .insert(guests)
+  .select()
+
+  console.log(error)
   if (error) console.log(error.message);
 }
 
 async function createCabins() {
   const { error } = await supabase.from("cabins").insert(cabins);
+
+  ;
   if (error) console.log(error.message);
 }
 
