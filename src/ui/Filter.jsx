@@ -42,7 +42,7 @@ function Filter({ filterField, options }) {
   const discount = searchParams.get(filterField) || "all";
 
   function handleClick(value) {
-    searchParams.set("discount", value);
+    searchParams.set(filterField, value);
     setSearchParams(searchParams);
   }
 
