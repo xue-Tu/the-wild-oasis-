@@ -87,7 +87,7 @@ function CabinRow({ cabin }) {
       )}
       <div>
         <Modal>
-          <Menus>
+          <Menus.Menu>
             <Menus.Toggle id={cabinId} />
 
             <Menus.List id={cabinId}>
@@ -116,7 +116,7 @@ function CabinRow({ cabin }) {
                 disabled={isDeleting}
               />
             </Modal.Window>
-          </Menus>
+          </Menus.Menu>
         </Modal>
       </div>
     </Table.Row>

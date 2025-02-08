@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledMenu = styled.div`
+const Menu = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -133,6 +133,7 @@ function Button({ children, icon, onClick }) {
   );
 }
 
+Menus.Menu = Menu;
 Menus.Toggle = Toggle;
 Menus.List = List;
 Menus.Button = Button;
