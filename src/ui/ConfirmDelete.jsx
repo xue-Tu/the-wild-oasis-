@@ -21,6 +21,8 @@ const StyledConfirmDelete = styled.div`
 `;
 
 function ConfirmDelete({ resourceName, onConfirm, disabled, onCloseModal }) {
+  console.log(1)
+
   return (
     <StyledConfirmDelete>
       <Heading as="h3">Delete {resourceName}</Heading>
