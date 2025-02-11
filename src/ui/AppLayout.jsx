@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import styled from "styled-components";
+import { DarkModeContextProvider } from "../context/DarkModeContext";
 
 const Main = styled.main`
   background-color: var(--color-grey-50);
@@ -28,13 +29,16 @@ const Container = styled.div`
 function AppLayout() {
   return (
     <StyledAppLayout>
-      <Header />
-      <Sidebar />
-      <Main>
-        <Container>
-          <Outlet />
-        </Container>
-      </Main>
+      <DarkModeContextProvider>
+        <Header />
+
+        <Sidebar />
+        <Main>
+          <Container>
+            <Outlet />
+          </Container>
+        </Main>
+      </DarkModeContextProvider>
     </StyledAppLayout>
   );
 }
