@@ -21,6 +21,7 @@ import GlobalStyles from "./styles/GlobalStyles";
 import Booking from "./pages/Booking";
 import Checkin from "./pages/Checkin";
 import ProtectedRoute from "./ui/ProtectedRoute";
+import { DarkModeContextProvider } from "./context/DarkModeContext";
 
 const routes = [
   {
@@ -92,6 +93,9 @@ const queryClient = new QueryClient({
 function App() {
   return (
     <>
+      <DarkModeContextProvider>
+
+      
       <QueryClientProvider client={queryClient}>
         <GlobalStyles />
 
@@ -119,6 +123,7 @@ function App() {
           }}
         />
       </QueryClientProvider>
+      </DarkModeContextProvider>
     </>
   );
 }

@@ -3,7 +3,6 @@ import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import styled from "styled-components";
-import { DarkModeContextProvider } from "../context/DarkModeContext";
 import { ErrorBoundary } from "react-error-boundary";
 import ErrorFallback from "./ErrorFallback";
 
@@ -31,7 +30,7 @@ const Container = styled.div`
 function AppLayout() {
   return (
     <StyledAppLayout>
-      <DarkModeContextProvider>
+      
         <Header />
 
         <Sidebar />
@@ -44,7 +43,7 @@ function AppLayout() {
             </Container>
           </ErrorBoundary>
         </Main>
-      </DarkModeContextProvider>
+     
     </StyledAppLayout>
   );
 }
