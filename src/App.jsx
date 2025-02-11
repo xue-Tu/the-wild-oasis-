@@ -94,7 +94,9 @@ function App() {
     <>
       <QueryClientProvider client={queryClient}>
         <GlobalStyles />
+
         <RouterProvider router={router}></RouterProvider>
+
         <ReactQueryDevtools initialIsOpen={false}></ReactQueryDevtools>
         <Toaster
           position="top-center"

@@ -4,6 +4,8 @@ import Header from "./Header";
 import Sidebar from "./Sidebar";
 import styled from "styled-components";
 import { DarkModeContextProvider } from "../context/DarkModeContext";
+import { ErrorBoundary } from "react-error-boundary";
+import ErrorFallback from "./ErrorFallback";
 
 const Main = styled.main`
   background-color: var(--color-grey-50);
@@ -34,9 +36,13 @@ function AppLayout() {
 
         <Sidebar />
         <Main>
-          <Container>
-            <Outlet />
-          </Container>
+          <ErrorBoundary
+            onReset={() => window.location.replace("/")}
+            FallbackComponent={ErrorFallback}>
+            <Container>
+              <Outlet />
+            </Container>
+          </ErrorBoundary>
         </Main>
       </DarkModeContextProvider>
     </StyledAppLayout>
