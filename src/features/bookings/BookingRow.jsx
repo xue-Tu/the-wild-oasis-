@@ -7,9 +7,14 @@ import Table from "../../ui/Table";
 import { formatCurrency } from "../../utils/helpers";
 import { formatDistanceFromNow } from "../../utils/helpers";
 import Menus from "../../ui/Menus";
-import { HiArrowDownOnSquare, HiArrowUpOnSquare, HiEye, HiTrash } from "react-icons/hi2";
+import {
+  HiArrowDownOnSquare,
+  HiArrowUpOnSquare,
+  HiEye,
+  HiTrash,
+} from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
-import { useCheckout } from "../check-in-out/useCheckOut";
+import { useCheckout } from "../check-in-out/useCheckout";
 import { useDeleteBooking } from "./useDeleteBooking";
 import Modal from "../../ui/Modal";
 import ConfirmDelete from "../../ui/ConfirmDelete";
@@ -62,12 +67,11 @@ function BookingRow({
   };
   const navigate = useNavigate();
   const { checkout, isCheckingOut } = useCheckout();
-  const { deleteBooking, isDeleting } = useDeleteBooking(); 
+  const { deleteBooking, isDeleting } = useDeleteBooking();
 
   return (
-    
-      <Table.Row>
-        <Modal>
+    <Table.Row>
+      <Modal>
         <Cabin>{cabinName}</Cabin>
 
         <Stacked>
@@ -114,8 +118,7 @@ function BookingRow({
               <Menus.Button
                 icon={<HiArrowUpOnSquare />}
                 onClick={() => checkout(bookingId)}
-                disabled={isCheckingOut}
-                >
+                disabled={isCheckingOut}>
                 Check out
               </Menus.Button>
             )}
@@ -124,20 +127,21 @@ function BookingRow({
               <Menus.Button
                 icon={<HiTrash />}
                 onClick={() => deleteBooking(bookingId)}
-                disabled={isDeleting}
-              >Delete</Menus.Button>
+                disabled={isDeleting}>
+                Delete
+              </Menus.Button>
             </Modal.Open>
-            
           </Menus.List>
-          
         </Menus.Menu>
         <Modal.Window name="delete">
-              <ConfirmDelete resourceName="booking" disabled={isDeleting} onConfirm={() => deleteBooking(bookingId)} />
-          </Modal.Window>
-
-        </Modal>
-      </Table.Row>
-    
+          <ConfirmDelete
+            resourceName="booking"
+            disabled={isDeleting}
+            onConfirm={() => deleteBooking(bookingId)}
+          />
+        </Modal.Window>
+      </Modal>
+    </Table.Row>
   );
 }
 
